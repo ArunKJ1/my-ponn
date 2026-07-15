@@ -1,149 +1,664 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Be My Valentine ❤️</title>
-  <style>
-    body {
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .card {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      z-index: 1;
-      max-width: 320px;
-    }
+<title>Our Little Universe ❤️</title>
 
-    h1 {
-      color: #ff4d6d;
-      margin-bottom: 15px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    button {
-      padding: 12px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
-    }
+<style>
 
-    #yes {
-      background: #ff4d6d;
-      color: white;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    #no {
-      background: #ddd;
-      position: absolute;
-    }
+body{
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:#020024;
+    color:white;
+}
 
-    .message {
-      color: #ff4d6d;
-      font-size: 14px;
-      margin-top: 10px;
-      min-height: 18px;
-    }
 
-    .signature {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #ff4d6d;
-      font-style: italic;
-    }
+/* ---------- LOADING SCREEN ---------- */
 
-    .hearts {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-    }
+.loading{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    transition:2s;
+}
 
-    .heart {
-      position: absolute;
-      font-size: 24px;
-      animation: float 4s linear infinite;
-    }
+.loading h1{
+    font-family:'Great Vibes';
+    font-size:60px;
+    animation:typing 3s steps(30);
+    overflow:hidden;
+    white-space:nowrap;
+}
 
-    @keyframes float {
-      0% { transform: translateY(100vh); opacity: 1; }
-      100% { transform: translateY(-10vh); opacity: 0; }
-    }
-  </style>
+
+/* ---------- NIGHT SKY ---------- */
+
+.space{
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(#020024,#090979,#000428);
+    display:none;
+    overflow:hidden;
+}
+
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite;
+}
+
+
+@keyframes twinkle{
+
+50%{
+    opacity:.2;
+}
+
+}
+
+
+/* shooting stars */
+
+.shooting{
+    position:absolute;
+    width:150px;
+    height:2px;
+    background:white;
+    transform:rotate(-45deg);
+    animation:shoot 3s linear infinite;
+}
+
+
+@keyframes shoot{
+
+from{
+    transform:translate(100vw,-20vh) rotate(-45deg);
+}
+
+to{
+    transform:translate(-20vw,80vh) rotate(-45deg);
+    opacity:0;
+}
+
+}
+
+
+/* ---------- MAIN CONTENT ---------- */
+
+.container{
+
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+}
+
+
+.card{
+
+width:90%;
+max-width:700px;
+padding:40px;
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+box-shadow:
+0 0 40px rgba(255,255,255,.2);
+
+}
+
+
+h1{
+
+font-family:'Great Vibes';
+font-size:65px;
+
+}
+
+
+p{
+
+font-size:18px;
+line-height:1.8;
+margin-top:20px;
+
+}
+
+
+button{
+
+margin-top:30px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:50px;
+
+font-size:18px;
+
+color:#ff4d88;
+
+background:white;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+/* ---------- MOON ---------- */
+
+.moon{
+
+position:absolute;
+
+top:80px;
+right:100px;
+
+width:130px;
+height:130px;
+
+background:#fff7c2;
+
+border-radius:50%;
+
+box-shadow:
+0 0 60px #fff7c2;
+
+}
+
+
+/* ---------- LETTER ---------- */
+
+.letter{
+
+display:none;
+
+}
+
+
+/* ---------- PHOTO ENDING ---------- */
+
+.photo{
+
+position:fixed;
+
+inset:0;
+
+background:
+linear-gradient(
+rgba(0,0,0,.5),
+rgba(0,0,0,.5)
+),
+url("our-photo.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+animation:zoom 8s infinite alternate;
+
+}
+
+
+@keyframes zoom{
+
+from{
+background-size:100%;
+}
+
+to{
+background-size:110%;
+}
+
+}
+
+
+.photo-text{
+
+font-family:'Great Vibes';
+
+font-size:70px;
+
+max-width:900px;
+
+}
+
+
+</style>
+
 </head>
+
+
 <body>
 
-  <div class="card">
-    <h1>Will you be my Valentine? ❤️</h1>
-    <button id="yes" onclick="yesClick()">Yes 💖</button>
-    <button id="no">No 🙈</button>
-    <div class="message" id="message"></div>
-    <div class="signature">– Yours, idiot ❤️</div>
-  </div>
 
-  <div class="hearts" id="hearts"></div>
+<!-- LOADING -->
 
-  <script>
-    const noBtn = document.getElementById("no");
-    const msg = document.getElementById("message");
-    let noCount = 0;
+<div class="loading" id="loading">
 
-    noBtn.addEventListener("mouseover", moveButton);
-    noBtn.addEventListener("touchstart", moveButton);
+<h1>
+Welcome, My Love...
+</h1>
 
-    function moveButton() {
-      noCount++;
+</div>
 
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
 
-      if (noCount === 2) msg.innerText = "Hey… don’t run from me 😢";
-      if (noCount === 4) msg.innerText = "Are you sure? I’m kinda serious ❤️";
-      if (noCount === 6) msg.innerText = "My heart is right here… 🥺";
-      if (noCount >= 8) {
-        msg.innerText = "There was never a No option anyway 😉";
-        noBtn.style.display = "none";
-      }
+<!-- NIGHT SKY -->
+
+<div class="space" id="space">
+
+<div class="moon"></div>
+
+
+<div class="container">
+
+
+<div class="card" id="main">
+
+
+<h1>
+Happy 2nd Month Anniversary ❤️
+</h1>
+
+
+<p>
+Two months ago, my life became brighter because of you.
+</p>
+
+
+<button onclick="openLetter()">
+Continue ❤️
+</button>
+
+
+</div>
+
+
+
+<div class="card letter" id="letter">
+
+
+<h1>
+Dear My Love,
+</h1>
+
+
+<p>
+
+These two months may seem short,
+but every day with you has become
+one of my favorite memories.
+
+<br><br>
+
+Thank you for making me smile,
+for believing in me,
+and for being the most wonderful person
+I've ever met.
+
+<br><br>
+
+Happy 2nd Month Anniversary ❤️
+
+</p>
+
+
+<button onclick="showStars()">
+
+Show Me The Stars ✨
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- FINAL PHOTO -->
+
+<div class="photo" id="photo">
+
+<div class="photo-text">
+
+Among billions of stars...
+
+<br>
+
+I found my favorite person ❤️
+
+
+<br><br>
+
+
+<small>
+
+I don't know what the future holds,
+
+<br>
+
+but I know I want every tomorrow
+
+<br>
+
+to include you.
+
+</small>
+
+
+<br><br>
+
+
+<button onclick="forever()">
+
+❤️ Forever?
+
+</button>
+
+
+</div>
+
+
+</div>
+
+<script>
+
+// Loading screen transition
+
+window.onload = function(){
+
+    setTimeout(()=>{
+
+        document.getElementById("loading").style.opacity="0";
+
+        setTimeout(()=>{
+
+            document.getElementById("loading").style.display="none";
+
+            document.getElementById("space").style.display="block";
+
+            createStars();
+
+        },1500);
+
+
+    },3000);
+
+};
+
+
+
+// Create hundreds of stars
+
+function createStars(){
+
+    const space=document.getElementById("space");
+
+
+    for(let i=0;i<180;i++){
+
+        let star=document.createElement("div");
+
+        star.className="star";
+
+
+        star.style.left=Math.random()*100+"vw";
+
+        star.style.top=Math.random()*100+"vh";
+
+
+        star.style.animationDelay=
+        Math.random()*3+"s";
+
+
+        star.style.width=
+        (1+Math.random()*4)+"px";
+
+
+        star.style.height=
+        star.style.width;
+
+
+        space.appendChild(star);
+
     }
 
-    function yesClick() {
-      document.body.innerHTML = `
-        <div class="card">
-          <h1>Yayyy! 💕</h1>
-          <p>You just made my heart officially yours 😘</p>
-          <p><strong>There was never a No option anyway 😉</strong></p>
-          <div class="signature">– Yours, idiot ❤️</div>
-        </div>
-        <div class="hearts" id="hearts"></div>
-      `;
-      startHearts();
-    }
 
-    function startHearts() {
-      const container = document.getElementById("hearts");
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
-        container.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-      }, 250);
-    }
-  </script>
+    // shooting stars
+
+    setInterval(()=>{
+
+        let shooting=document.createElement("div");
+
+        shooting.className="shooting";
+
+
+        shooting.style.top=
+        Math.random()*40+"vh";
+
+
+        document.body.appendChild(shooting);
+
+
+        setTimeout(()=>{
+
+            shooting.remove();
+
+        },3000);
+
+
+    },4000);
+
+
+
+    // floating hearts
+
+    setInterval(createHeart,500);
+
+}
+
+
+
+// Floating hearts
+
+function createHeart(){
+
+    let heart=document.createElement("div");
+
+
+    heart.innerHTML=
+    Math.random()>0.5?"❤️":"💕";
+
+
+    heart.style.position="fixed";
+
+    heart.style.bottom="-20px";
+
+    heart.style.left=
+    Math.random()*100+"vw";
+
+
+    heart.style.fontSize=
+    (20+Math.random()*30)+"px";
+
+
+    heart.style.animation=
+    "floatHeart 6s linear";
+
+
+    document.body.appendChild(heart);
+
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },6000);
+
+}
+
+
+
+// Open love letter
+
+function openLetter(){
+
+    document.getElementById("main").style.display="none";
+
+    document.getElementById("letter").style.display="block";
+
+}
+
+
+
+// Show photo surprise
+
+function showStars(){
+
+    document.getElementById("space").style.display="none";
+
+    document.getElementById("photo").style.display="flex";
+
+}
+
+
+
+// Final Forever message
+
+function forever(){
+
+    document.querySelector(".photo-text").innerHTML=
+
+    `
+
+    Yes ❤️
+
+    <br><br>
+
+    Today.
+
+    <br>
+
+    Tomorrow.
+
+    <br>
+
+    Always.
+
+    <br><br>
+
+    Happy 2nd Month Anniversary
+
+    <br>
+
+    My Love ❤️
+
+    `;
+
+
+    createPetals();
+
+}
+
+
+
+// Rose petals
+
+function createPetals(){
+
+    setInterval(()=>{
+
+        let petal=document.createElement("div");
+
+
+        petal.innerHTML="🌹";
+
+
+        petal.style.position="fixed";
+
+        petal.style.top="-20px";
+
+        petal.style.left=
+        Math.random()*100+"vw";
+
+
+        petal.style.fontSize=
+        "25px";
+
+
+        petal.style.animation=
+        "petalFall 5s linear";
+
+
+        document.body.appendChild(petal);
+
+
+
+        setTimeout(()=>{
+
+            petal.remove();
+
+        },5000);
+
+
+
+    },300);
+
+}
+
+
+</script>
+
 
 </body>
 </html>
